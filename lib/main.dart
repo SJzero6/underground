@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:underground/home.dart';
+import 'package:provider/provider.dart';
+import 'package:underground/provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Under());
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => Mqttprovider())
+    ], child: MaterialApp(home: Under()));
   }
 }
